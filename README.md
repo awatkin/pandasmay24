@@ -13,6 +13,7 @@ Make sure to "Fork" the code.
 The Theme park has provided the new system requirements. 
 
 These are:
+
 The existing code provided allows users to select different Revenue Streams items and show the sales of that menu item over a period of time.
 
 The solution must also identify trends and patterns over a period of time for:
