@@ -1,6 +1,21 @@
 import pandas as pd
 
 
+#  solution 1 below to give totals for each rev stream
+
+
+def getdf():  # new subroutine to import a clean dataframe and return it.
+    df = pd.read_csv("Task4_tester.csv")  # reads in the csv using pandas into a dataframe
+    return df  # sends the dataframe back to the calling subroutine.
+
+
+def revstreamtotals():  # Added a new subroutine (at the top) to get totals
+    df = getdf()  # This calls the new subroutine above to get a clean dataframe
+    df1 = df[['Tickets', 'Gift Shop', 'Snack Stand', 'Pictures']]  # Copies only needed columns from df to the new df1
+    df1 = df1.sum()  # This runs a sum function on each column and makes it into a series
+    return df1  # This returns the calculated series
+
+
 # Displays the main menu and collects choice of menu item
 
 
@@ -11,8 +26,8 @@ def menu():
     while flag:
         print("###############################################")
         print("Welcome! Please choose an option from the list")
-        print("1. Show total sales for a specific Revenue Stream") 
-        print("2. ")
+        print("1. Show sales for a specific Revenue Stream")
+        print("2. Show total sales for each revenue stream")
 
         main_menu_choice = input("Please enter the number of your choice (1-2): ")
 
@@ -83,5 +98,10 @@ if main_menu == 1:
 
     print("Here is the sales data for {} :".format(revStream))
     print(extracted_data)
+
+elif main_menu == 2:  # New menu item checked for
+    totals = revstreamtotals()  # captures the returned dataframe / series to print
+    print("Here is the total sales for each revenue stream:")  # Pre-cursor message for usability
+    print(totals)  # Prints out the returned data series
 else:
     print('This part of the program is still under development')
