@@ -2,6 +2,15 @@ import pandas as pd
 import matplotlib.pyplot as plt  # Needed import using standard plt format
 
 
+''' Tasks to be completed
+The solution must also identify trends and patterns over a period of time for:
+
+Completed in this code: The Total sales for each Revenue Streams
+Completed in this code: The average sales for AM vs PM for a selected Revenue Stream
+The sales of a selected Revenue stream over a period of days selected by the user
+A comparison of AM sales Vs PM sales combining all revenue streams.'''
+
+
 #  solution 1 below to give totals for each rev stream
 
 
