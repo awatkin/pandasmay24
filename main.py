@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt  # Needed import using standard plt format
 
 
 ''' Tasks to be completed
@@ -23,6 +24,9 @@ def amvspmsales():  # new subroutine to solve task 2
     revstream = get_revstream_choice()  # gets the users revenue stream choice
     df1 = df[['Time', revstream]]  # takes just Time and the selected revstream forward
     df1 = df1.groupby('Time').mean()  # uses groupby and mean() to provide the average
+    df1.plot.bar()  # sends dataseries to maptlotlib as bar chart
+    plt.title("Average sales for AM vs PM")  # Sets the title of the chart
+    plt.show()  # makes the chart show to the user
     return df1  # returns the needed dataseries
 
 
@@ -30,6 +34,9 @@ def revstreamtotals():  # Added a new subroutine (at the top) to get totals
     df = getdf()  # This calls the new subroutine above to get a clean dataframe
     df1 = df[['Tickets', 'Gift Shop', 'Snack Stand', 'Pictures']]  # Copies only needed columns from df to the new df1
     df1 = df1.sum()  # This runs a sum function on each column and makes it into a series
+    df1.plot()  # sends the dataseries to matplotlib
+    plt.title("Sol 1: Revenue Stream Totals")  # Sets the title of the chart
+    plt.show()  # Triggers the chart to be shown to the user
     return df1  # This returns the calculated series
 
 
