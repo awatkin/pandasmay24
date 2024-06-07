@@ -101,7 +101,7 @@ def menu():
             else:
                 return int(main_menu_choice)    
 
-# Menu item selection form user and validates it
+# Menu item selection form user and validates it.
 
 
 def get_revstream_choice():
