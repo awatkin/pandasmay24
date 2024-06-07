@@ -7,15 +7,24 @@ The solution must also identify trends and patterns over a period of time for:
 Completed in this code: The Total sales for each Revenue Streams
 Completed in this code: The average sales for AM vs PM for a selected Revenue Stream
 Completed in this code: The sales of a selected Revenue stream over a period of days selected by the user
-A comparison of AM sales Vs PM sales combining all revenue streams.'''
+Completed in this code: A comparison of AM sales Vs PM sales combining all revenue streams.'''
 
 
-#  solution 1, 2 and 3 below
+#  solution 1, 2, 3 and 4 below
 
 
 def getdf():  # new subroutine to import a clean dataframe and return it.
     df = pd.read_csv("Task4_tester.csv")  # reads in the csv using pandas into a dataframe
     return df  # sends the dataframe back to the calling subroutine.
+
+
+def ampmallstreams():  # New subroutine to solve task 4
+    df = getdf()  # Gets in a clean dataframe
+    df1 = df[['Time', 'Tickets', 'Gift Shop', 'Snack Stand', 'Pictures']]  # copies only the needed columns into df1
+    df1 = df1.groupby('Time').sum()  # Sums the totals for AM and PM
+    df2 = df[['Time', 'Tickets', 'Gift Shop', 'Snack Stand', 'Pictures']]  # Copies only the needed columns into df2
+    df2 = df2.groupby('Time').sum().sum(axis=1)  # groups and sums, axis1 needed for AM and PM not by col
+    return df1, df2  # Returns the two data series for printing
 
 
 def revstreamdays():  # New subroutineto solve task 3
@@ -57,8 +66,9 @@ def menu():
         print("2. Show total sales for each revenue stream")  # Added a new menu option for solution 1
         print("3. Average sales for AM vs PM for a selected Revenue Stream")  # Added a new menu option for solution 2
         print("4. Sales for selected Revenue Stream for a number of days")  # Added a menu option for solution 3
+        print("5. AM vs PM for a selected Revenue Stream")  # Added a menu option for solution 4
 
-        main_menu_choice = input("Please enter the number of your choice (1-4): ")  # Adjusted text for more options
+        main_menu_choice = input("Please enter the number of your choice (1-5): ")  # Adjusted text for more options
 
         try:
             int(main_menu_choice)
@@ -67,7 +77,7 @@ def menu():
             print("You generated the following error: ", e)
             flag = True
         else:
-            if int(main_menu_choice) < 1 or int(main_menu_choice) > 4:  # changed 3 to 4 for option choices
+            if int(main_menu_choice) < 1 or int(main_menu_choice) > 5:  # changed 4 to 5 for option choices
                 print("Sorry, you did not enter a valid choice")
                 flag = True
             else:
@@ -138,7 +148,13 @@ elif main_menu == 3:  # New menu item checked for - solution 2
     print(totals)  # prints out the returned data
 elif main_menu == 4:
     totals = revstreamdays()
-    print("Here is the total sales for a selected revenue stream for your number of days:")
+    print("Here is the total sales for a selected revenue stream for your number of days:")  # Message for readability
+    print(totals)  # Prints the totals out for the user
+elif main_menu == 5:
+    totalsind, totals = ampmallstreams()  # captures the returned results
+    print("Here is the AM and PM sales for each of the Revenue Streams ")  # message for readability
+    print(totalsind)  # Outputs the results
+    print("Here is the total AM vs PM sales combining all Revenue Streams")
     print(totals)
 else:
     print('This part of the program is still under development')
