@@ -27,7 +27,7 @@ def amvspmsales():  # new subroutine to solve task 2
     df1.plot.bar()  # sends dataseries to maptlotlib as bar chart
     plt.title("Average sales for AM vs PM")  # Sets the title of the chart
     plt.show()  # makes the chart show to the user
-    return df1  # returns the needed dataseries
+    return df1  # returns the needed data series
 
 
 def revstreamtotals():  # Added a new subroutine (at the top) to get totals
