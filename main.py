@@ -6,12 +6,9 @@ import matplotlib.pyplot as plt  # Needed import using standard plt format
 The solution must also identify trends and patterns over a period of time for:
 
 Completed in this code: The Total sales for each Revenue Streams
-Completed in this code: The average sales for AM vs PM for a selected Revenue Stream
+The average sales for AM vs PM for a selected Revenue Stream
 The sales of a selected Revenue stream over a period of days selected by the user
 A comparison of AM sales Vs PM sales combining all revenue streams.'''
-
-
-#  solution 1 below to give totals for each rev stream
 
 
 def getdf():  # new subroutine to import a clean dataframe and return it.
@@ -19,7 +16,7 @@ def getdf():  # new subroutine to import a clean dataframe and return it.
     return df  # sends the dataframe back to the calling subroutine.
 
 
-def revstreamtotals():  # Added a new subroutine (at the top) to get totals
+def revstreamtotals():  # Added a new subroutine for task 1
     df = getdf()  # This calls the new subroutine above to get a clean dataframe
     df1 = df[['Tickets', 'Gift Shop', 'Snack Stand', 'Pictures']]  # Copies only needed columns from df to the new df1
     df1 = df1.sum()  # This runs a sum function on each column and makes it into a series
